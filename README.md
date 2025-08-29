@@ -13,9 +13,6 @@
 2. Erklären Sie, welche technischen Herausforderungen Sie in Ihrem Projekt erwarten.
    - Es ist meine erste mobile App mit .NET MAUI.
 
-3. Beschreiben Sie, welche nicht-technischen Aspekte Sie in diesem Projekt besonders üben möchten.
-   - xxx
-
 ## 22.8
 
 siehe *Grob-Planung*
@@ -25,6 +22,12 @@ siehe *Grob-Planung*
 ☝️ Vergessen Sie nicht, einen ersten Code und Skizze auf github hochzuladen!
 
 ## 29.8
+
+siehe *github issues*
+
+✍️ Heute habe ich mit einer Videoreihe zu MAUI gestartet. Währendessen habe ich meine IDE vorbereitet und mein erstes Projekt angefangen. Ausserdem habe ich die Startseite meiner App skizziert und mehr oder weniger implementiert. Allerdings war es sehr schwierig den Android-Emulator zu starten, weshalb ich mich über Expo informieren und wahrscheinlich die Technologie wechseln. (53 Wörter)
+
+## 5.9
 
 siehe *github issues*
 
