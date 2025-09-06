@@ -31,6 +31,12 @@ siehe *github issues*
 
 siehe *github issues*
 
+✍️ Heute habe ich mit der Entwicklung mit expo begonnen. Zuerst habe ich die App erstellt und die Navigation programmiert. Anschliessend habe ich eine Skizze für die Seite, um ein neues Game hinzuzufügen, erstellt. Allerdings hatte ich noch keine Zeit für die Implementierung dieser "Hinzufügen" Seite. (45 Wörter)
+
+## 12.9
+
+siehe *github issues*
+
 ✍️ Heute habe ich... (50-100 Wörter)
 
 ☝️ Vergessen Sie nicht, Ihren Code auf github hochzuladen
