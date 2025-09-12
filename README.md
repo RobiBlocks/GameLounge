@@ -37,6 +37,12 @@ siehe *github issues*
 
 siehe *github issues*
 
+✍️ Heute habe ich mich um das "Add New Game"-Formular gekümmert. Ich habe Input-Felder für Titel, Spielkonsole, allgemeine Information und Rating erstellt. Im Anschluss habe ich einen Button erstellt, um ein Bild aus der Smartphone-Bibliothek auswählen zu können. Um all diese Input-Felder zu erstellen habe ich insgesamt vier React Components programmiert. (50 Wörter)
+
+## 19.9
+
+siehe *github issues*
+
 ✍️ Heute habe ich... (50-100 Wörter)
 
 ☝️ Vergessen Sie nicht, Ihren Code auf github hochzuladen
