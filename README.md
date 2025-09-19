@@ -43,6 +43,12 @@ siehe *github issues*
 
 siehe *github issues*
 
+✍️ Heute habe ich meine App von SDK 53.0 auf SDK 54.0 geupdated. Anschliesend habe ich mir das Tutorial zu AsyncStorage angeschaut und implementiert. Allerdings habe ich schnell bemerkt, dass man mit AsyncStorage nur einzelne Key-Value-Pairs speichern kann. Deshalb habe ich ein Tutorial zu SQLite angeschaut und implementiert, aber es gibt noch ein paar Fehler, die behoben werden müssen. (58 Wörter)
+
+## 26.9
+
+siehe *github issues*
+
 ✍️ Heute habe ich... (50-100 Wörter)
 
 ☝️ Vergessen Sie nicht, Ihren Code auf github hochzuladen
