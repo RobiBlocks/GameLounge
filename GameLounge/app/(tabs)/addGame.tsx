@@ -2,8 +2,10 @@ import Button from "@/components/Button";
 import ImageViewer from "@/components/ImageViewer";
 import LogoViewer from "@/components/LogoViewer";
 import PhotoButton from "@/components/PhotoButton";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as ImagePicker from "expo-image-picker";
-import React, { useState } from "react";
+import { useSQLiteContext } from "expo-sqlite";
+import React, { useEffect, useState } from "react";
 import {
   Pressable,
   ScrollView,
@@ -14,6 +16,34 @@ import {
 } from "react-native";
 
 export default function AddGameScreen() {
+  const [form, setForm] = useState({
+    title: "",
+    year: "",
+    genre: "",
+    publisher: "",
+  });
+
+  const db = useSQLiteContext();
+
+  const handleSubmit = async () => {
+    try {
+      if (!form.title || !form.year || !form.genre || !form.publisher) {
+        alert("Please fill in all fields");
+      }
+
+      await db.runAsync(
+        "INSERT INTO games (title, year, genre, publisher) VALUES (?, ?, ?, ?)",
+        [form.title, form.year, form.genre, form.publisher]
+      );
+
+      alert("Game added successfully");
+      setForm({ title: "", year: "", genre: "", publisher: "" });
+    } catch (error) {
+      console.error("Error adding game: ", error);
+      alert("There was an error adding the game");
+    }
+  };
+
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const pickImageAsync = async () => {
@@ -28,44 +58,55 @@ export default function AddGameScreen() {
       alert("You did not select any image.");
     }
   };
-  const handleSubmit = () => {
-    console.log("Game added!");
-  };
 
   return (
     <ScrollView>
       <View style={styles.container}>
-
         <TextInput
           style={styles.inputTitle}
+          onChangeText={(title) => setForm({ ...form, title })}
           placeholder="Enter game title..."
           placeholderTextColor="white"
         />
 
         <View style={styles.box}>
-          <ImageViewer imgSource={selectedImage || require("../../assets/images/landscape_placeholder.svg")} />
+          <ImageViewer
+            imgSource={
+              selectedImage ||
+              require("../../assets/images/landscape_placeholder.svg")
+            }
+          />
           <PhotoButton buttonText="Choose an image" onPress={pickImageAsync} />
         </View>
 
         <View style={styles.box}>
-          <LogoViewer imgSource={require("../../assets/images/nintendo_Switch_2_logo.png")} />
-          <LogoViewer imgSource={require("../../assets/images/playstation_logo.jpg")} />
-          <LogoViewer imgSource={require("../../assets/images/xbox_logo.png")} />
+          <LogoViewer
+            imgSource={require("../../assets/images/nintendo_Switch_2_logo.png")}
+          />
+          <LogoViewer
+            imgSource={require("../../assets/images/playstation_logo.jpg")}
+          />
+          <LogoViewer
+            imgSource={require("../../assets/images/xbox_logo.png")}
+          />
         </View>
 
         <View style={styles.boxInput}>
           <TextInput
             style={styles.input}
+            onChangeText={(year) => setForm({ ...form, year })}
             placeholder="Enter year released..."
             placeholderTextColor="white"
           />
           <TextInput
             style={styles.input}
+            onChangeText={(genre) => setForm({ ...form, genre })}
             placeholder="Enter genre..."
             placeholderTextColor="white"
           />
           <TextInput
             style={styles.input}
+            onChangeText={(publisher) => setForm({ ...form, publisher })}
             placeholder="Enter publisher..."
             placeholderTextColor="white"
           />
@@ -82,7 +123,6 @@ export default function AddGameScreen() {
         <Pressable style={styles.button} onPress={handleSubmit}>
           <Text style={styles.buttonText}>Add Game</Text>
         </Pressable>
-
       </View>
     </ScrollView>
   );
