@@ -49,6 +49,15 @@ siehe *github issues*
 
 siehe *github issues*
 
+✍️ Heute habe ich mich zuerst die Fehler bei der Speicherung behoben. Anschliessend habe ich mich darum gekümmert, die Bilder in der SQLite Datenbank zu speichern. Ausserdem habe ich die Bilder auf der Startseite anzeigen lassen. Es wird nun neben dem DELETE-Button ein EDIT-Button angezeigt, allerdings fehlt noch dessen Implementierung. (50 Wörter)
+
+☝️ Vergessen Sie nicht, Ihren Code auf github hochzuladen
+
+
+## 31.10
+
+siehe *github issues*
+
 ✍️ Heute habe ich... (50-100 Wörter)
 
 ☝️ Vergessen Sie nicht, Ihren Code auf github hochzuladen
