@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
+import MultipleSelect from "@/components/MultipleSelect";
 
 export default function AboutScreen() {
   return (

@@ -13,7 +13,10 @@ export default function RootLayout() {
               title TEXT,
               year TEXT,
               genre TEXT,
-              publisher TEXT
+              publisher TEXT,
+              console TEXT,
+              rating TEXT,
+              imageUri TEXT
             );
             PRAGMA journal_mode = WAL;
           `);

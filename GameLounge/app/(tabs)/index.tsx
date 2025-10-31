@@ -1,22 +1,37 @@
+import DeleteButton from "@/components/DeleteButton";
+import EditButton from "@/components/EditButton";
+import { useFocusEffect } from "@react-navigation/native";
 import { useSQLiteContext } from "expo-sqlite";
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
+  Image,
   StyleSheet,
   Text,
   View,
 } from "react-native";
 
+type Game = {
+  id: number;
+  title: string;
+  year: number;
+  genre: string;
+  publisher: string;
+  console: string;
+  imageUri: string | null;
+  rating: string;
+};
+
 export default function Index() {
-  const [games, setGames] = useState([]);
+  const [games, setGames] = useState<Game[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const db = useSQLiteContext();
 
   const loadGames = async () => {
     try {
       const results = await db.getAllAsync(`SELECT * FROM games`);
-      setGames(results);
+      setGames(results as Game[]);
     } catch (error) {
       alert("Database error: " + error);
     } finally {
@@ -24,9 +39,12 @@ export default function Index() {
     }
   };
 
-  useEffect(() => {
-    loadGames();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      console.log("Screen focused, reloading games...");
+      loadGames();
+    }, [])
+  );
 
   if (isLoading) {
     return <ActivityIndicator size="large" color="#000000ff" />;
@@ -38,10 +56,19 @@ export default function Index() {
       keyExtractor={(item) => item.id.toString()}
       renderItem={({ item }) => (
         <View style={styles.container}>
-          <Text style={styles.text}>{item.title}</Text>
-          <Text style={styles.text}>{item.year}</Text>
-          <Text style={styles.text}>{item.genre}</Text>
-          <Text style={styles.text}>{item.publisher}</Text>
+          <View style={styles.imageContainer}>
+            {item.imageUri && (
+              <Image source={{ uri: item.imageUri }} style={styles.image} />
+            )}
+          </View>
+          <View style={styles.descriptionContainer}>
+            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.text}>{item.year}</Text>
+            <Text style={styles.text}>{item.publisher}, {item.genre}</Text>
+            <Text style={styles.text}>{item.console}</Text>
+            <Text style={styles.text}>{item.rating}</Text>
+            <DeleteButton gameId={item.id} onDelete={() => loadGames()} />
+          </View>
         </View>
       )}
     />
@@ -51,19 +78,33 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    margin: 10,
+    padding: 10,
+    borderRadius: 10,
+    flexDirection: "row",
     backgroundColor: "blue",
   },
-  text: {
+  imageContainer: {
+    maxWidth: "50%",
+    margin: 10,
+  },
+  descriptionContainer: {
+    maxWidth: "50%",
+    margin: 10,
+  },
+  title: {
     color: "white",
     fontWeight: "bold",
     fontSize: 20,
   },
-  button: {
-    marginTop: 20,
-    padding: 10,
-    backgroundColor: "white",
-    borderRadius: 5,
+  text: {
+    color: "white",
+    fontSize: 16,
+    margin: 2,
+  },
+  image: {
+    width: 125,
+    height: 200,
+    borderRadius: 10,
   },
 });

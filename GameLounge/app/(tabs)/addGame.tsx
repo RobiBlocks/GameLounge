@@ -1,11 +1,12 @@
-import Button from "@/components/Button";
 import ImageViewer from "@/components/ImageViewer";
-import LogoViewer from "@/components/LogoViewer";
+import MultipleSelect from "@/components/MultipleSelect";
 import PhotoButton from "@/components/PhotoButton";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import SingleSelect from "@/components/SingleSelect";
+import { File, Paths } from "expo-file-system";
 import * as ImagePicker from "expo-image-picker";
+import { useRouter } from "expo-router";
 import { useSQLiteContext } from "expo-sqlite";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Pressable,
   ScrollView,
@@ -16,46 +17,68 @@ import {
 } from "react-native";
 
 export default function AddGameScreen() {
+  const router = useRouter();
   const [form, setForm] = useState({
     title: "",
     year: "",
     genre: "",
     publisher: "",
+    console: "",
+    rating: "",
+    imageUri: "",
   });
 
   const db = useSQLiteContext();
 
-  const handleSubmit = async () => {
-    try {
-      if (!form.title || !form.year || !form.genre || !form.publisher) {
-        alert("Please fill in all fields");
-      }
-
-      await db.runAsync(
-        "INSERT INTO games (title, year, genre, publisher) VALUES (?, ?, ?, ?)",
-        [form.title, form.year, form.genre, form.publisher]
-      );
-
-      alert("Game added successfully");
-      setForm({ title: "", year: "", genre: "", publisher: "" });
-    } catch (error) {
-      console.error("Error adding game: ", error);
-      alert("There was an error adding the game");
-    }
-  };
-
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [newUri, setNewUri] = useState<string | null>(null);
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
       quality: 1,
+      aspect: [2, 3],
     });
 
     if (!result.canceled) {
-      setSelectedImage(result.assets[0].uri);
+      const uri = result.assets[0].uri;
+      setSelectedImage(uri);
+
+      const timestamp = new Date().getTime();
+      const fileName = `game_image_${timestamp}.jpg`;
+
+      const targetFile = new File(Paths.document, fileName);
+      const sourceFile = new File(uri);
+
+      await sourceFile.copy(targetFile);
+
+      setNewUri(targetFile.uri);
     } else {
-      alert("You did not select any image.");
+      alert("You didn't select any image.");
+    }
+  };
+
+  const handleSubmit = async () => {
+    try {
+      if (!form.title || !form.year || !form.genre || !form.publisher  || !form.console || !form.rating) {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      await db.runAsync(
+        "INSERT INTO games (title, year, genre, publisher, console, rating, imageUri) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        [form.title, form.year, form.genre, form.publisher, form.console, form.rating, newUri || null]
+      );
+
+      alert("Game added successfully");
+      setForm({ title: "", year: "", genre: "", publisher: "", console: "", rating: "", imageUri: "" });
+      setSelectedImage(null);
+      setNewUri(null);
+
+      router.push("/(tabs)");
+    } catch (error) {
+      console.error("Error adding game: ", error);
+      alert("There was an error adding the game");
     }
   };
 
@@ -73,22 +96,14 @@ export default function AddGameScreen() {
           <ImageViewer
             imgSource={
               selectedImage ||
-              require("../../assets/images/landscape_placeholder.svg")
+              require("../../assets/images/placeholder.svg")
             }
           />
           <PhotoButton buttonText="Choose an image" onPress={pickImageAsync} />
         </View>
 
         <View style={styles.box}>
-          <LogoViewer
-            imgSource={require("../../assets/images/nintendo_Switch_2_logo.png")}
-          />
-          <LogoViewer
-            imgSource={require("../../assets/images/playstation_logo.jpg")}
-          />
-          <LogoViewer
-            imgSource={require("../../assets/images/xbox_logo.png")}
-          />
+          <MultipleSelect onSelect={(values) => setForm({ ...form, console: values.join(", ") })} />
         </View>
 
         <View style={styles.boxInput}>
@@ -113,11 +128,7 @@ export default function AddGameScreen() {
         </View>
 
         <View style={styles.box}>
-          <Button buttonText="bad" />
-          <Button buttonText="mid" />
-          <Button buttonText="good" />
-          <Button buttonText="excellent" />
-          <Button buttonText="perfect" />
+          <SingleSelect onSelect={(rating) => setForm({ ...form, rating })} />
         </View>
 
         <Pressable style={styles.button} onPress={handleSubmit}>
