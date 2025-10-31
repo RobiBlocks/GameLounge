@@ -1,50 +1,60 @@
-# Welcome to your Expo app 👋
+# Lernperiode 11
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+22.8 bis 26.9.2024
 
-## Get started
+## Grob-Planung
 
-1. Install dependencies
+1. Erklären Sie Ihre Projekt-Idee in einem Satz, als müssen Sie einen Investor davon überzeugen.
+   - Ich möchte eine App erstellen, in der man seine Games verwalten kann.
+   - Zusätzlich kann man Sie als "Noch nie gespielt", "Am Spielen", "Fertig", "100%" markieren.
+   - Man kann seine Spiele filtern und sortieren.
+   - Es gibt einen Knopf, der ein zufälliges Game aus der Sammlung vorschlägt.
 
-   ```bash
-   npm install
-   ```
+2. Erklären Sie, welche technischen Herausforderungen Sie in Ihrem Projekt erwarten.
+   - Es ist meine erste mobile App mit .NET MAUI.
 
-2. Start the app
+## 22.8
 
-   ```bash
-   npx expo start
-   ```
+siehe *Grob-Planung*
 
-In the output, you'll find options to open the app in a
+✍️ Heute habe ich mir angeschaut, wie man ein .NET MAUI Projekt erstellt. Anschliessend habe ich mir den *maker space* angesehen. Zum Abschluss habe ich meine Projektidee entwickelt und beschrieben. Mit dem erstellen der mobile App konnte ich noch nicht beginnen, weil das Herunterladen des Updates von VS sehr lange gedauert hat. (51 Wörter)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+☝️ Vergessen Sie nicht, einen ersten Code und Skizze auf github hochzuladen!
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 29.8
 
-## Get a fresh project
+siehe *github issues*
 
-When you're ready, run:
+✍️ Heute habe ich mit einer Videoreihe zu MAUI gestartet. Währendessen habe ich meine IDE vorbereitet und mein erstes Projekt angefangen. Ausserdem habe ich die Startseite meiner App skizziert und mehr oder weniger implementiert. Allerdings war es sehr schwierig den Android-Emulator zu starten, weshalb ich mich über Expo informieren und wahrscheinlich die Technologie wechseln. (53 Wörter)
 
-```bash
-npm run reset-project
-```
+## 5.9
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+siehe *github issues*
 
-## Learn more
+✍️ Heute habe ich mit der Entwicklung mit expo begonnen. Zuerst habe ich die App erstellt und die Navigation programmiert. Anschliessend habe ich eine Skizze für die Seite, um ein neues Game hinzuzufügen, erstellt. Allerdings hatte ich noch keine Zeit für die Implementierung dieser "Hinzufügen" Seite. (45 Wörter)
 
-To learn more about developing your project with Expo, look at the following resources:
+## 12.9
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+siehe *github issues*
 
-## Join the community
+✍️ Heute habe ich mich um das "Add New Game"-Formular gekümmert. Ich habe Input-Felder für Titel, Spielkonsole, allgemeine Information und Rating erstellt. Im Anschluss habe ich einen Button erstellt, um ein Bild aus der Smartphone-Bibliothek auswählen zu können. Um all diese Input-Felder zu erstellen habe ich insgesamt vier React Components programmiert. (50 Wörter)
 
-Join our community of developers creating universal apps.
+## 19.9
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+siehe *github issues*
+
+✍️ Heute habe ich meine App von SDK 53.0 auf SDK 54.0 geupdated. Anschliesend habe ich mir das Tutorial zu AsyncStorage angeschaut und implementiert. Allerdings habe ich schnell bemerkt, dass man mit AsyncStorage nur einzelne Key-Value-Pairs speichern kann. Deshalb habe ich ein Tutorial zu SQLite angeschaut und implementiert, aber es gibt noch ein paar Fehler, die behoben werden müssen. (58 Wörter)
+
+## 26.9
+
+siehe *github issues*
+
+✍️ Heute habe ich mich zuerst die Fehler bei der Speicherung behoben. Anschliessend habe ich mich darum gekümmert, die Bilder in der SQLite Datenbank zu speichern. Ausserdem habe ich die Bilder auf der Startseite anzeigen lassen. Es wird nun neben dem DELETE-Button ein EDIT-Button angezeigt, allerdings fehlt noch dessen Implementierung. (50 Wörter)
+
+## 31.10
+
+siehe *github issues*
+
+✍️ Heute habe ich das Speichern von Bewertungen und Konsolen gekümmert. Dabei habe ich zwei Kompnenten erstellt: SingleSelect und MultipleSelect. Nun kann man eine Bewertungsstufe, aber mehrere Konsolen auswählen. Es fehlt eigentlich nur noch, dass das Formular nach hinzufügen eines Spiels geleert wird. Ausserdem könnte man die Anzeige der Games nachbessern. (50 Wörter)
+
+☝️ Vergessen Sie nicht, Ihren Code auf github hochzuladen
