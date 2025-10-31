@@ -1,6 +1,20 @@
 # Lernperiode 11
 
-22.8 bis 26.9.2024
+22.8.2025 bis 31.10.2025
+
+## Feriges Projekt
+
+- In meiner App "GameLounge" kann man seine Computerspiele ansehen, hinzufügen und löschen.
+- Unten befindet sich die Navigation, um zwischen den einzelnen Seiten wechseln zu können.
+- Auf der Startseite werden alle Spiele aus der SQLite Datenbank angezeigt.
+- Das Löschen erfolgt per einfachem Knopfdruck.
+- Beim Hinzufügen eines neuen Games kann man folgende Informationen speichern:
+   - Titel und Bild
+   - Konsolen (auf welchen es verfügbar ist)
+   - Release-Jahr, Genre und Publisher (als Texteingabe)
+   - Bewertung (bad, mid, good, excellent, masterpiece)
+
+<img src="https://github.com/RobiBlocks/Lern-Periode-11/blob/main/GameLounge.gif" alt="Game Lounge" width="30%">
 
 ## Grob-Planung
 
@@ -58,3 +72,7 @@ siehe *github issues*
 ✍️ Heute habe ich das Speichern von Bewertungen und Konsolen gekümmert. Dabei habe ich zwei Kompnenten erstellt: SingleSelect und MultipleSelect. Nun kann man eine Bewertungsstufe, aber mehrere Konsolen auswählen. Es fehlt eigentlich nur noch, dass das Formular nach hinzufügen eines Spiels geleert wird. Ausserdem könnte man die Anzeige der Games nachbessern. (50 Wörter)
 
 ☝️ Vergessen Sie nicht, Ihren Code auf github hochzuladen
+
+## Reflexion
+
+In dieser Lernperiode habe ich gelernt wie ich mithilfe von Expo eine App programmieren kann. Ich habe gelernt wie man eine Navigation erstellen, eine SQLite Datenbank einrichten, mit Bildern arbeitern und verschiedene Komponenten mit Props programmieren kann. Es hat mir Spass gemacht diese Dinge zu lernen, weil es sehr ähnlich zum Erstellen von Webseiten ist, das ich gerne mache. Ich bin mit meiner Arbeitsleistung relativ zu frieden, allerdings muss ich schauen, dass ich das 4. Arbeitspaket öfters vorhole anstatt nachhole.
